@@ -3,7 +3,7 @@
   "description": "Blog sobre inteligencia artificial e big data",
   "license": "MIT",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "./src/server.js",
   "author": {
     "name": "Leodeymison Alcântara",
     "url": "https://leodeymison.com/"
@@ -18,7 +18,7 @@
     "bootstrap5"
   ],
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon ./src/server.js"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",

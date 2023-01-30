@@ -20,48 +20,17 @@ const ModelList = (item, id) => `
         </a>
     </li>
 `
-
-const Data = [
-    {
-        _id: 1,
-        name: "Big data",
-        body: [
-            {
-                _id: 1,
-                name: "Regressão linear",
-                list: [
-                    {
-                        _id: 1,
-                        name: "Regressão linear simples"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        _id: 2,
-        name: "Machine learning",
-        body: [
-            {
-                _id: 2,
-                name: "Rede neural",
-                list: [
-                    {
-                        _id: 2,
-                        name: "Rede neural convulsional"
-                    }
-                ]
-            }
-        ]
-    }
-]
 const addListMenu = document.getElementById("addListMenu");
-Data.forEach(dt => {
-    addListMenu.innerHTML += Model(dt)
-    dt.body.forEach((bd) => {
-        addListMenu.innerHTML += ModelBody(bd, bd._id)
-        bd.list.forEach(list => {
-            document.getElementById(`addListMenu-item${bd._id}`).innerHTML += ModelList(list, list._id);
+
+fetch("/api/categorys").then(res => res.json()).then(data => {
+    console.log("respponse: ", data)
+    data.forEach(dt => {
+        addListMenu.innerHTML += Model(dt)
+        dt.body.forEach((bd) => {
+            addListMenu.innerHTML += ModelBody(bd, bd._id)
+            bd.list.forEach(list => {
+                document.getElementById(`addListMenu-item${bd._id}`).innerHTML += ModelList(list, list._id);
+            })
         })
     })
 })
